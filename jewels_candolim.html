@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Jewels of India | Candolim, Goa | Luxury Indian Jewelry</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#c9a84c;--gold-light:#e8c97a;--gold-pale:#f7f0dc;
+  --dark:#0a0d0f;--dark2:#111518;--dark3:#1a1f24;
+  --teal:#1a6e6e;--teal-light:#22938f;--teal-pale:#e0f4f3;
+  --cream:#faf8f4;--muted:#8a8070;--r:14px;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--cream);overflow-x:hidden;width:100%}
+img{max-width:100%;height:auto;display:block}
+
+/* ══ NAV ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:14px clamp(16px,4vw,44px);display:flex;align-items:center;justify-content:space-between;transition:all .4s;background:transparent}
+nav.scrolled{background:rgba(10,13,15,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:10px clamp(16px,4vw,44px);border-bottom:1px solid rgba(201,168,76,.1)}
+.nav-logo-wrap{display:flex;flex-direction:column;line-height:1}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,3vw,1.4rem);font-weight:700;color:var(--gold);letter-spacing:.1em;text-decoration:none}
+.nav-branch{font-size:clamp(.55rem,.7vw,.62rem);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:2px}
+.nav-right{display:flex;align-items:center;gap:clamp(14px,2.5vw,28px)}
+.nav-links{display:flex;gap:clamp(14px,2vw,26px);align-items:center}
+.nav-links a{color:rgba(255,255,255,.68);font-size:clamp(.7rem,.85vw,.8rem);font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);font-size:clamp(.68rem,.82vw,.76rem);font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:clamp(8px,1.2vw,10px) clamp(14px,2vw,20px);border-radius:50px;text-decoration:none;transition:all .3s;white-space:nowrap}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,.4)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;-webkit-tap-highlight-color:transparent}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--gold);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:998;background:rgba(10,13,15,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:80px 24px 40px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,6vw,2rem);font-weight:600;color:rgba(255,255,255,.8);text-decoration:none;letter-spacing:.08em;transition:color .2s}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu .m-cta{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);font-family:'Inter',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:13px 32px;border-radius:50px;margin-top:8px}
+
+/* ══ HERO ══ */
+#hero{position:relative;width:100%;height:100svh;min-height:580px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+#three-canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at 40% 50%,rgba(10,13,15,.2) 0%,rgba(10,13,15,.85) 68%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:80px clamp(16px,5vw,40px) 60px;max-width:min(820px,94vw);width:100%}
+.logo-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:clamp(18px,4vw,28px)}
+.logo-emblem{width:clamp(64px,12vw,84px);height:clamp(64px,12vw,84px);border-radius:50%;border:1.5px solid var(--gold);background:rgba(201,168,76,.08);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);position:relative}
+.logo-emblem::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(201,168,76,.2)}
+.logo-emblem svg{width:clamp(36px,7vw,48px);height:clamp(36px,7vw,48px)}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,9vw,5rem);font-weight:700;color:#fff;letter-spacing:.06em;line-height:1;text-shadow:0 2px 40px rgba(201,168,76,.25)}
+.logo-location{display:inline-flex;align-items:center;gap:7px;background:rgba(26,110,110,.25);border:1px solid rgba(34,147,143,.35);color:var(--teal-light);font-size:clamp(.62rem,1.6vw,.72rem);font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-top:6px}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(.95rem,2.8vw,1.4rem);font-style:italic;color:rgba(255,255,255,.7);margin-bottom:clamp(22px,4vw,36px);line-height:1.65;padding:0 8px}
+.hero-divider{width:clamp(80px,20vw,120px);height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto clamp(22px,4vw,36px)}
+.hero-btns{display:flex;gap:clamp(10px,2vw,14px);justify-content:center;flex-wrap:wrap}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);font-weight:700;font-size:clamp(.76rem,1.8vw,.88rem);letter-spacing:.08em;text-transform:uppercase;padding:clamp(12px,2vw,14px) clamp(22px,4vw,30px);border-radius:50px;text-decoration:none;border:none;cursor:pointer;transition:all .3s;box-shadow:0 6px 28px rgba(201,168,76,.35);display:inline-flex;align-items:center;justify-content:center;gap:7px;-webkit-tap-highlight-color:transparent}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(201,168,76,.55)}
+.btn-teal{color:var(--teal-light);font-weight:600;font-size:clamp(.76rem,1.8vw,.88rem);letter-spacing:.08em;text-transform:uppercase;padding:clamp(11px,2vw,13px) clamp(20px,4vw,28px);border-radius:50px;text-decoration:none;border:1.5px solid rgba(34,147,143,.45);transition:all .3s;display:inline-flex;align-items:center;justify-content:center;gap:7px;-webkit-tap-highlight-color:transparent}
+.btn-teal:hover{border-color:var(--teal-light);background:rgba(34,147,143,.08)}
+.hero-checks{margin-top:clamp(20px,3.5vw,30px);display:flex;gap:clamp(10px,2.5vw,22px);justify-content:center;flex-wrap:wrap}
+.hc{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:clamp(.7rem,1.2vw,.78rem);font-weight:500}
+.hc-dot{width:15px;height:15px;border-radius:50%;background:rgba(34,147,143,.18);border:1.5px solid var(--teal-light);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--teal-light);flex-shrink:0}
+.scroll-hint{position:absolute;bottom:clamp(16px,3.5vw,28px);left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.5}
+.scroll-hint span{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.scroll-line{width:1px;height:clamp(26px,4vw,38px);background:linear-gradient(180deg,var(--gold),transparent);animation:sa 1.8s infinite}
+@keyframes sa{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1}100%{opacity:0;transform:scaleY(1);transform-origin:top}}
+
+/* ══ SHARED ══ */
+.sec{padding:clamp(50px,8vw,90px) clamp(16px,5vw,44px)}
+.sec-label{text-align:center;font-size:clamp(.6rem,.85vw,.68rem);font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.sec-title{text-align:center;font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,5vw,3.2rem);font-weight:600;color:var(--cream);margin-bottom:14px;line-height:1.2}
+.sec-sub{text-align:center;color:rgba(255,255,255,.48);font-size:clamp(.8rem,1.4vw,.9rem);max-width:520px;margin:0 auto clamp(36px,5.5vw,54px);line-height:1.8}
+.gold-rule{display:flex;align-items:center;gap:16px;justify-content:center;margin-bottom:clamp(32px,4.5vw,50px)}
+.gold-rule::before,.gold-rule::after{content:'';height:1px;width:clamp(40px,8vw,80px);background:linear-gradient(90deg,transparent,var(--gold))}
+.gold-rule::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.gr-diamond{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+
+/* ══ EXPERIENCE BAR ══ */
+.exp-bar{background:linear-gradient(135deg,var(--dark3),rgba(26,110,110,.18));border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12);padding:clamp(18px,3.5vw,26px) clamp(16px,4vw,44px)}
+.exp-inner{max-width:1000px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap}
+.ei{flex:1;min-width:clamp(100px,18vw,160px);max-width:200px;text-align:center;padding:clamp(8px,1.5vw,12px) clamp(10px,2vw,16px);border-right:1px solid rgba(255,255,255,.08)}
+.ei:last-child{border-right:none}
+.ei-n{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--gold)}
+.ei-l{color:rgba(255,255,255,.5);font-size:clamp(.62rem,.8vw,.7rem);margin-top:3px;letter-spacing:.05em}
+
+/* ══ ABOUT ══ */
+.about-bg{background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%)}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,70px);align-items:center}
+.about-img-wrap{position:relative}
+.about-img{width:100%;height:clamp(280px,42vw,500px);object-fit:cover;border-radius:6px}
+.about-frame{position:absolute;inset:-12px;border:1.5px solid rgba(201,168,76,.22);border-radius:6px;pointer-events:none}
+.about-badge{position:absolute;top:clamp(12px,2vw,20px);left:clamp(12px,2vw,20px);background:rgba(10,13,15,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(201,168,76,.3);border-radius:10px;padding:clamp(10px,1.8vw,14px) clamp(14px,2.2vw,18px);text-align:center}
+.ab-n{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:700;color:var(--gold);line-height:1}
+.ab-l{font-size:clamp(.56rem,.7vw,.62rem);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px}
+.about-text .sec-label,.about-text .sec-title{text-align:left}
+.about-text .sec-title{font-size:clamp(1.5rem,3.5vw,2.6rem)}
+.about-text p{color:rgba(255,255,255,.58);font-size:clamp(.8rem,1.4vw,.9rem);line-height:1.9;margin-bottom:14px}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tag{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);color:var(--gold-light);font-size:clamp(.6rem,.78vw,.7rem);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:50px}
+
+/* ══ CANDOLIM FEEL ══ */
+.candolim-strip{background:var(--dark2);padding:clamp(48px,7vw,80px) clamp(16px,5vw,44px)}
+.cs-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,60px);align-items:center}
+.cs-text .sec-label,.cs-text h2{text-align:left}
+.cs-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.5vw,2.4rem);font-weight:600;color:var(--cream);margin-bottom:16px;line-height:1.25}
+.cs-text p{color:rgba(255,255,255,.55);font-size:clamp(.8rem,1.4vw,.9rem);line-height:1.9;margin-bottom:14px}
+.cs-img-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;height:clamp(280px,38vw,420px)}
+.csi{border-radius:8px;overflow:hidden}
+.csi img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.csi:hover img{transform:scale(1.06)}
+.csi:first-child{grid-row:span 2}
+
+/* ══ COLLECTIONS ══ */
+.collections-bg{background:var(--dark)}
+.coll-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,22px)}
+.cc{position:relative;border-radius:8px;overflow:hidden;cursor:pointer}
+.cc-img{width:100%;height:clamp(220px,28vw,340px);object-fit:cover;transition:transform .6s ease}
+.cc:hover .cc-img{transform:scale(1.07)}
+.cc-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 32%,rgba(10,13,15,.94) 100%)}
+.cc-body{position:absolute;bottom:0;left:0;right:0;padding:clamp(16px,2.5vw,24px)}
+.cc-cat{font-size:clamp(.58rem,.72vw,.66rem);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:600}
+.cc-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:600;color:#fff;margin-bottom:5px;line-height:1.2}
+.cc-desc{font-size:clamp(.7rem,.88vw,.78rem);color:rgba(255,255,255,.6);line-height:1.6}
+.cc-border{position:absolute;inset:0;border:1.5px solid transparent;border-radius:8px;transition:border-color .3s;pointer-events:none}
+.cc:hover .cc-border{border-color:rgba(201,168,76,.38)}
+
+/* ══ PRODUCTS ══ */
+.prod-bg{background:var(--dark2)}
+.prod-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.8vw,20px)}
+.pc{background:var(--dark3);border-radius:10px;overflow:hidden;border:1px solid rgba(201,168,76,.09);transition:all .35s}
+.pc:hover{transform:translateY(-6px);border-color:rgba(201,168,76,.28);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.pc-img{width:100%;height:clamp(130px,15vw,195px);object-fit:cover}
+.pc-body{padding:clamp(12px,1.6vw,16px) clamp(12px,1.6vw,16px) clamp(14px,2vw,18px)}
+.pc-cat{font-size:clamp(.56rem,.68vw,.63rem);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;font-weight:600}
+.pc-name{font-family:'Cormorant Garamond',serif;font-size:clamp(.98rem,1.6vw,1.18rem);font-weight:600;color:var(--cream);margin-bottom:5px}
+.pc-desc{font-size:clamp(.7rem,.83vw,.76rem);color:rgba(255,255,255,.48);line-height:1.6}
+
+/* ══ LOCATION ══ */
+.loc-bg{background:var(--dark)}
+.loc-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,60px);align-items:start}
+.loc-text .sec-label,.loc-text h2{text-align:left}
+.loc-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:600;color:var(--cream);margin-bottom:clamp(20px,3vw,28px);line-height:1.25}
+.loc-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:clamp(16px,2.5vw,22px)}
+.li-icon{width:clamp(36px,5vw,44px);height:clamp(36px,5vw,44px);border-radius:50%;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);display:flex;align-items:center;justify-content:center;font-size:clamp(14px,1.8vw,16px);flex-shrink:0}
+.li-text strong{display:block;font-size:clamp(.82rem,1.3vw,.9rem);color:var(--cream);font-weight:700;margin-bottom:3px}
+.li-text span{font-size:clamp(.76rem,1.1vw,.82rem);color:rgba(255,255,255,.5);line-height:1.6}
+.li-text a{color:var(--gold);font-size:clamp(.76rem,1.1vw,.82rem);font-weight:700;text-decoration:none}
+.li-text a:hover{text-decoration:underline}
+.map-frame{border-radius:10px;overflow:hidden;box-shadow:0 6px 28px rgba(0,0,0,.4);border:1px solid rgba(201,168,76,.12)}
+.map-frame iframe{width:100%;height:clamp(280px,36vw,380px);border:none;display:block}
+
+/* ══ WHY US ══ */
+.why-bg{background:var(--dark2)}
+.why-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,26px)}
+.wc{text-align:center;padding:clamp(22px,3vw,32px) clamp(14px,2vw,20px);border:1px solid rgba(201,168,76,.11);border-radius:10px;background:rgba(201,168,76,.025);transition:all .3s}
+.wc:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.055);transform:translateY(-4px)}
+.wc-icon{font-size:clamp(1.4rem,3vw,1.8rem);margin-bottom:12px}
+.wc h3{font-family:'Cormorant Garamond',serif;font-size:clamp(.98rem,1.8vw,1.15rem);font-weight:600;color:var(--cream);margin-bottom:7px}
+.wc p{font-size:clamp(.7rem,.83vw,.78rem);color:rgba(255,255,255,.48);line-height:1.7}
+
+/* ══ CTA ══ */
+.cta-sec{background:linear-gradient(135deg,#0a0d0f,#111518);padding:clamp(60px,9vw,90px) clamp(16px,5vw,44px);text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(600px,90vw);height:min(600px,90vw);border-radius:50%;border:1px solid rgba(201,168,76,.07);pointer-events:none}
+.cta-sec::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(380px,60vw);height:min(380px,60vw);border-radius:50%;border:1px solid rgba(26,110,110,.12);pointer-events:none}
+.cta-inner{position:relative;z-index:1;max-width:620px;margin:0 auto}
+.cta-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,5vw,3.2rem);font-weight:600;color:var(--cream);margin-bottom:14px;line-height:1.2}
+.cta-inner h2 span{color:var(--gold)}
+.cta-inner p{color:rgba(255,255,255,.52);font-size:clamp(.8rem,1.4vw,.9rem);line-height:1.8;margin-bottom:30px}
+.cta-btns{display:flex;gap:clamp(10px,2vw,14px);justify-content:center;flex-wrap:wrap}
+.contact-chips{margin-top:clamp(24px,4vw,36px);display:flex;gap:clamp(10px,2vw,16px);justify-content:center;flex-wrap:wrap}
+.chip{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:50px;padding:clamp(9px,1.5vw,11px) clamp(16px,2.5vw,22px);color:rgba(255,255,255,.55);font-size:clamp(.74rem,1.1vw,.8rem)}
+.chip-icon{font-size:clamp(13px,1.6vw,15px)}
+
+/* ══ FOOTER ══ */
+footer{background:#070a0c;padding:clamp(24px,4vw,36px) clamp(16px,5vw,44px) clamp(16px,2.5vw,22px);border-top:1px solid rgba(201,168,76,.09)}
+.footer-top{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(24px,4vw,50px);padding-bottom:clamp(24px,3.5vw,36px);border-bottom:1px solid rgba(255,255,255,.05)}
+.fb-brand{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.3rem);font-weight:700;color:var(--gold);letter-spacing:.1em;margin-bottom:10px}
+.fb-tagline{font-size:clamp(.72rem,.9vw,.78rem);color:rgba(255,255,255,.38);line-height:1.7;max-width:220px}
+.fb-col h4{font-size:clamp(.62rem,.78vw,.68rem);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(10px,1.8vw,16px)}
+.fb-col a{display:block;color:rgba(255,255,255,.42);font-size:clamp(.72rem,.88vw,.78rem);text-decoration:none;margin-bottom:clamp(7px,1.2vw,10px);transition:color .2s;letter-spacing:.04em}
+.fb-col a:hover{color:var(--gold)}
+.fb-col p{color:rgba(255,255,255,.42);font-size:clamp(.72rem,.88vw,.78rem);line-height:1.7}
+.footer-bottom{max-width:1100px;margin:clamp(14px,2vw,20px) auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.f-copy{color:rgba(255,255,255,.22);font-size:clamp(.62rem,.78vw,.68rem)}
+.f-sister{color:rgba(255,255,255,.22);font-size:clamp(.62rem,.78vw,.68rem)}
+.f-sister a{color:rgba(201,168,76,.5);text-decoration:none}
+.f-sister a:hover{color:var(--gold)}
+
+/* ══ REVEAL ══ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ══ BREAKPOINTS ══ */
+@media(max-width:1024px){
+  .coll-grid{grid-template-columns:repeat(2,1fr)}
+  .prod-grid{grid-template-columns:repeat(3,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .footer-top>div:first-child{grid-column:span 2}
+  .fb-tagline{max-width:100%}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .about-inner,.cs-inner,.loc-inner{grid-template-columns:1fr;gap:clamp(32px,5vw,48px)}
+  .about-text .sec-label,.about-text .sec-title{text-align:center}
+  .about-tags{justify-content:center}
+  .cs-text .sec-label,.cs-text h2,.loc-text .sec-label,.loc-text h2{text-align:center}
+  .cs-img-grid{height:clamp(240px,50vw,340px)}
+  .coll-grid{grid-template-columns:1fr;gap:14px}
+  .cc-img{height:clamp(200px,48vw,290px)}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  .footer-top>div:first-child{grid-column:span 1}
+  .footer-bottom{justify-content:center;text-align:center;flex-direction:column;gap:6px}
+}
+@media(max-width:600px){
+  .prod-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .why-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .ei{min-width:90px}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:center;gap:10px}
+  .btn-gold,.btn-teal{width:100%;max-width:260px;font-size:.82rem}
+  .cta-btns{flex-direction:column;align-items:center}
+  .cta-btns .btn-gold,.cta-btns .btn-teal{width:100%;max-width:260px}
+  .about-badge{display:none}
+  .about-frame{inset:-8px}
+  .contact-chips{flex-direction:column;align-items:center}
+}
+@media(max-width:380px){
+  .prod-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .hero-checks{flex-direction:column;align-items:center}
+  .logo-name{letter-spacing:.02em}
+}
+@media(max-height:500px) and (orientation:landscape){
+  #hero{height:auto;padding:70px 24px 50px;min-height:100vw}
+  .scroll-hint{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo-wrap" href="#" style="text-decoration:none">
+    <span class="nav-logo">Jewels of India</span>
+    <span class="nav-branch">Candolim, Goa</span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about">Our Story</a>
+      <a href="#collections">Collections</a>
+      <a href="#products">Products</a>
+      <a href="#location">Visit Us</a>
+    </div>
+    <a class="nav-cta" href="#contact">Enquire Now</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="closeMenu()">Our Story</a>
+  <a href="#collections" onclick="closeMenu()">Collections</a>
+  <a href="#products" onclick="closeMenu()">Products</a>
+  <a href="#location" onclick="closeMenu()">Visit Us</a>
+  <a href="#contact" class="m-cta" onclick="closeMenu()">Enquire Now</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="three-canvas"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="logo-wrap">
+      <div class="logo-emblem">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="24,3 28.5,17 43,17 31.5,26 36,40 24,32 12,40 16.5,26 5,17 19.5,17" fill="none" stroke="#c9a84c" stroke-width="1.4"/>
+          <circle cx="24" cy="24" r="5.5" fill="#c9a84c" opacity=".65"/>
+          <circle cx="24" cy="24" r="10" fill="none" stroke="#c9a84c" stroke-width=".7" opacity=".35"/>
+          <circle cx="24" cy="24" r="15" fill="none" stroke="#c9a84c" stroke-width=".4" opacity=".18"/>
+        </svg>
+      </div>
+      <div class="logo-name">Jewels of India</div>
+      <div class="logo-location">📍 Candolim, Goa</div>
+    </div>
+    <div class="hero-tagline">The Heart of Goa's Luxury Jewelry Experience</div>
+    <div class="hero-divider"></div>
+    <div class="hero-btns">
+      <a class="btn-gold" href="#collections">✦ Explore Collections</a>
+      <a class="btn-teal" href="#location">📍 Find Our Store</a>
+    </div>
+    <div class="hero-checks">
+      <div class="hc"><div class="hc-dot">✓</div>Walk-In Welcome</div>
+      <div class="hc"><div class="hc-dot">✓</div>BIS Hallmarked Gold</div>
+      <div class="hc"><div class="hc-dot">✓</div>Certified Gemstones</div>
+      <div class="hc"><div class="hc-dot">✓</div>10+ Years Trusted</div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- EXP BAR -->
+<div class="exp-bar">
+  <div class="exp-inner">
+    <div class="ei"><div class="ei-n">10+</div><div class="ei-l">Years in Goa</div></div>
+    <div class="ei"><div class="ei-n">5★</div><div class="ei-l">Customer Rated</div></div>
+    <div class="ei"><div class="ei-n">1000+</div><div class="ei-l">Happy Customers</div></div>
+    <div class="ei"><div class="ei-n">500+</div><div class="ei-l">Unique Designs</div></div>
+    <div class="ei"><div class="ei-n">BIS</div><div class="ei-l">Hallmark Certified</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec about-bg" id="about">
+  <div class="about-inner">
+    <div class="about-img-wrap reveal">
+      <img class="about-img" src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=800&q=85" alt="Jewelry craftsmanship">
+      <div class="about-frame"></div>
+      <div class="about-badge">
+        <div class="ab-n">10+</div>
+        <div class="ab-l">Years of Craft</div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <div class="sec-label">Our Story</div>
+      <h2 class="sec-title">Candolim's Finest<br>Jewelry Destination</h2>
+      <p>Nestled in the vibrant heart of Candolim — near Newton's Supermarket, opposite the famous Elephant Shop — Jewels of India is Goa's most beloved fine jewelry boutique. We bring the grandest traditions of Indian goldsmithing directly to the streets of North Goa.</p>
+      <p>Our Candolim store is a destination in itself. Tourists, travelers, and locals alike step in to discover handcrafted pieces spanning Kundan, Polki, Meenakari, Temple jewelry, and contemporary diamond designs — all under one beautifully curated roof.</p>
+      <p>When you carry a piece from Jewels of India, you carry a fragment of India's timeless legacy.</p>
+      <div class="about-tags">
+        <span class="tag">BIS Hallmarked</span>
+        <span class="tag">Genuine Gemstones</span>
+        <span class="tag">Kundan & Polki</span>
+        <span class="tag">Custom Orders</span>
+        <span class="tag">Gift Packaging</span>
+        <span class="tag">Tourist Friendly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANDOLIM SECTION -->
+<section class="candolim-strip" id="candolim">
+  <div class="cs-inner">
+    <div class="cs-text reveal">
+      <div class="sec-label">Where Goa Meets Grandeur</div>
+      <h2>A Store as Beautiful<br>as the Jewels Inside</h2>
+      <p>Candolim is one of Goa's most iconic beach destinations — and our store sits right at its cultural pulse. The moment you step inside, you're transported from the sun-soaked streets into a world of golden light, precious stones, and timeless craftsmanship.</p>
+      <p>Our curated boutique experience means you're never just shopping — you're discovering stories. Each piece is presented with its heritage, technique, and artisan lineage. Our knowledgeable staff guide you through every tradition.</p>
+      <p>Whether you're a tourist looking for a memorable keepsake or a collector seeking rare pieces, Jewels of India Candolim is your destination.</p>
+      <div style="margin-top:clamp(20px,3.5vw,28px)">
+        <a class="btn-gold" href="#location">📍 Get Directions</a>
+      </div>
+    </div>
+    <div class="cs-img-grid reveal">
+      <div class="csi"><img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80" alt="Gold jewelry display"></div>
+      <div class="csi"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80" alt="Diamond jewelry"></div>
+      <div class="csi"><img src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&q=80" alt="Silver Kundan jewelry"></div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="sec collections-bg" id="collections">
+  <div class="sec-label">Our Collections</div>
+  <h2 class="sec-title">Handcrafted for Eternity</h2>
+  <div class="gold-rule"><div class="gr-diamond"></div></div>
+  <div class="coll-grid">
+    <div class="cc reveal">
+      <img class="cc-img" src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=700&q=80" alt="Temple Gold">
+      <div class="cc-overlay"></div>
+      <div class="cc-body">
+        <div class="cc-cat">Heritage Series</div>
+        <div class="cc-name">Temple Gold Jewelry</div>
+        <div class="cc-desc">Sacred motifs in 22K & 24K gold, inspired by India's ancient temples and divine iconography</div>
+      </div>
+      <div class="cc-border"></div>
+    </div>
+    <div class="cc reveal">
+      <img class="cc-img" src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=700&q=80" alt="Diamonds">
+      <div class="cc-overlay"></div>
+      <div class="cc-body">
+        <div class="cc-cat">Luxury Collection</div>
+        <div class="cc-name">Diamond & Precious Stones</div>
+        <div class="cc-desc">Certified diamonds, rubies, emeralds, and sapphires set in brilliantly crafted gold mounts</div>
+      </div>
+      <div class="cc-border"></div>
+    </div>
+    <div class="cc reveal">
+      <img class="cc-img" src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=700&q=80" alt="Kundan Silver">
+      <div class="cc-overlay"></div>
+      <div class="cc-body">
+        <div class="cc-cat">Artisan Collection</div>
+        <div class="cc-name">Kundan, Polki & Meenakari</div>
+        <div class="cc-desc">Hand-enameled masterpieces in the royal tradition of Rajasthan's finest ateliers</div>
+      </div>
+      <div class="cc-border"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="sec prod-bg" id="products">
+  <div class="sec-label">What We Offer</div>
+  <h2 class="sec-title">Our Complete Range</h2>
+  <div class="gold-rule"><div class="gr-diamond"></div></div>
+  <div class="prod-grid">
+    <div class="pc reveal"><img class="pc-img" src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&q=80" alt="Necklaces"><div class="pc-body"><div class="pc-cat">Gold · Silver · Diamond</div><div class="pc-name">Necklaces & Sets</div><div class="pc-desc">Bridal sets, chokers, long haars in every regional tradition</div></div></div>
+    <div class="pc reveal"><img class="pc-img" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&q=80" alt="Bangles"><div class="pc-body"><div class="pc-cat">Gold · Silver · Kundan</div><div class="pc-name">Bangles & Bracelets</div><div class="pc-desc">Kadas, churi bangles, and ornate stone-set bracelets</div></div></div>
+    <div class="pc reveal"><img class="pc-img" src="https://images.unsplash.com/photo-1630019852942-f89202989a59?w=500&q=80" alt="Earrings"><div class="pc-body"><div class="pc-cat">Jhumkas · Chandbalis</div><div class="pc-name">Earrings</div><div class="pc-desc">Delicate studs to grand chandbalis and statement jhumkas</div></div></div>
+    <div class="pc reveal"><img class="pc-img" src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&q=80" alt="Rings"><div class="pc-body"><div class="pc-cat">Gold · Diamond · Gemstone</div><div class="pc-name">Rings</div><div class="pc-desc">Engagement, wedding, and collector's statement rings</div></div></div>
+    <div class="pc reveal"><img class="pc-img" src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=500&q=80" alt="Pendants"><div class="pc-body"><div class="pc-cat">Religious · Modern</div><div class="pc-name">Pendants & Lockets</div><div class="pc-desc">God lockets, evil eye pendants, and contemporary charms</div></div></div>
+    <div class="pc reveal"><img class="pc-img" src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80" alt="Silver Gifts"><div class="pc-body"><div class="pc-cat">Silver · Gifting</div><div class="pc-name">Silver Artifacts & Gifts</div><div class="pc-desc">Idols, showpieces, and pure silver decorative items</div></div></div>
+    <div class="pc reveal"><img class="pc-img" src="https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=500&q=80" alt="Anklets"><div class="pc-body"><div class="pc-cat">Gold · Silver</div><div class="pc-name">Anklets & Payal</div><div class="pc-desc">Traditional and modern ankle jewelry in gold & silver</div></div></div>
+    <div class="pc reveal"><img class="pc-img" src="https://images.unsplash.com/photo-1586104195538-050b9f74f58e?w=500&q=80" alt="Hair Jewelry"><div class="pc-body"><div class="pc-cat">Bridal · Everyday</div><div class="pc-name">Maangtika & Hair Jewelry</div><div class="pc-desc">Bridal maangtikas, passa, and hair pins for every occasion</div></div></div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="sec loc-bg" id="location">
+  <div class="loc-inner">
+    <div class="loc-text reveal">
+      <div class="sec-label">Find Us</div>
+      <h2>Right in the Heart<br>of Candolim</h2>
+      <div class="loc-item">
+        <div class="li-icon">📍</div>
+        <div class="li-text">
+          <strong>Address</strong>
+          <span>Near Newton's Supermarket,<br>Opposite Elephant Shop,<br>Candolim, Goa — 403515</span>
+        </div>
+      </div>
+      <div class="loc-item">
+        <div class="li-icon">🕐</div>
+        <div class="li-text">
+          <strong>Store Hours</strong>
+          <span>Open Daily · 10:00 AM – 9:00 PM<br>Walk-ins always welcome</span>
+        </div>
+      </div>
+      <div class="loc-item">
+        <div class="li-icon">📞</div>
+        <div class="li-text">
+          <strong>Call Us</strong>
+          <a href="tel:08322418888">0832-241-8888</a>
+        </div>
+      </div>
+      <div class="loc-item">
+        <div class="li-icon">🚶</div>
+        <div class="li-text">
+          <strong>How to Find Us</strong>
+          <span>We are on Candolim's main road — a landmark spot next to Newton's Supermarket. Easy to find, impossible to miss.</span>
+        </div>
+      </div>
+      <div style="margin-top:clamp(18px,3vw,26px)">
+        <a class="btn-gold" href="https://maps.google.com/?q=Jewels+of+India+Candolim+Goa" target="_blank">🗺 Open in Google Maps</a>
+      </div>
+    </div>
+    <div class="map-frame reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3845.4!2d73.7590!3d15.5180!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sNear+Newton%27s+Supermarket+Candolim+Goa!5e0!3m2!1sen!2sin!4v1700000000001&q=Candolim+Goa+near+Newton+Supermarket"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Jewels of India Candolim Location">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="sec why-bg">
+  <div class="sec-label">Why Choose Us</div>
+  <h2 class="sec-title">The Jewels of India Promise</h2>
+  <div class="gold-rule"><div class="gr-diamond"></div></div>
+  <div class="why-grid">
+    <div class="wc reveal"><div class="wc-icon">🏅</div><h3>BIS Hallmarked</h3><p>Every gold piece bears the official BIS hallmark. Purity you can trust, guaranteed.</p></div>
+    <div class="wc reveal"><div class="wc-icon">💎</div><h3>Certified Gems</h3><p>Diamonds and precious stones certified by recognized gemological laboratories.</p></div>
+    <div class="wc reveal"><div class="wc-icon">🎨</div><h3>500+ Designs</h3><p>From classic temple gold to contemporary diamond-set pieces — always something new.</p></div>
+    <div class="wc reveal"><div class="wc-icon">🤝</div><h3>10+ Years Trust</h3><p>Over a decade of serving Goa's residents and visitors with integrity and craftsmanship.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contact">
+  <div class="cta-inner reveal">
+    <div class="sec-label">Visit or Enquire</div>
+    <h2>Come Discover<br><span>Candolim's Finest Jewels</span></h2>
+    <p>Step into our Candolim boutique and let our team guide you through India's most extraordinary jewelry traditions. Walk-ins are always welcome — or call ahead to arrange a private viewing.</p>
+    <div class="cta-btns">
+      <a class="btn-gold" href="tel:08322418888">📞 Call Us Now</a>
+      <a class="btn-teal" href="https://maps.google.com/?q=Jewels+of+India+Candolim+Goa" target="_blank">📍 Get Directions</a>
+    </div>
+    <div class="contact-chips">
+      <div class="chip"><span class="chip-icon">📍</span>Near Newton's Supermarket, Candolim</div>
+      <div class="chip"><span class="chip-icon">⏰</span>Open Daily 10 AM – 9 PM</div>
+      <div class="chip"><span class="chip-icon">📞</span>0832-241-8888</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="fb-brand">Jewels of India</div>
+      <p class="fb-tagline">Goa's finest destination for authentic Indian jewelry — handcrafted, hallmarked, and timeless.</p>
+    </div>
+    <div class="fb-col">
+      <h4>Navigate</h4>
+      <a href="#about">Our Story</a>
+      <a href="#collections">Collections</a>
+      <a href="#products">Products</a>
+      <a href="#location">Visit Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="fb-col">
+      <h4>Candolim Store</h4>
+      <p>Near Newton's Supermarket,<br>Opposite Elephant Shop,<br>Candolim, Goa — 403515</p>
+      <a href="tel:08322418888" style="margin-top:10px;display:block">0832-241-8888</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="f-copy">© 2025 Jewels of India · Candolim, Goa · All Rights Reserved</span>
+    <span class="f-sister">Also at: <a href="#">Dabolim Airport</a></span>
+  </div>
+</footer>
+
+<!-- THREE.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ── MOBILE MENU ──
+const ham=document.getElementById('hamburger'),mMenu=document.getElementById('mobile-menu');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mMenu.classList.toggle('open');document.body.style.overflow=mMenu.classList.contains('open')?'hidden':'';});
+function closeMenu(){ham.classList.remove('open');mMenu.classList.remove('open');document.body.style.overflow='';}
+
+// ── NAV ──
+const navEl=document.getElementById('nav');
+window.addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',window.scrollY>60);});
+
+// ── THREE.JS — ocean wave + gem particles ──
+const canvas=document.getElementById('three-canvas');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+renderer.setSize(window.innerWidth,window.innerHeight);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,100);
+camera.position.z=5;
+
+// Gem count scaled to device
+const gCount=window.innerWidth<480?50:window.innerWidth<768?80:130;
+const gemGeo=new THREE.OctahedronGeometry(0.055,0);
+const gems=[];
+for(let i=0;i<gCount;i++){
+  const hue=Math.random()<0.6?0.11+Math.random()*0.04:0.52+Math.random()*0.06;
+  const m=new THREE.Mesh(gemGeo,new THREE.MeshBasicMaterial({
+    color:new THREE.Color().setHSL(hue,.65+Math.random()*.3,.38+Math.random()*.3),
+    wireframe:Math.random()>.38,transparent:true,opacity:.35+Math.random()*.55
+  }));
+  m.position.set((Math.random()-.5)*20,(Math.random()-.5)*14,(Math.random()-.5)*8-2);
+  const s=.35+Math.random()*1.8;m.scale.set(s,s,s);
+  m.userData={rx:(Math.random()-.5)*.011,ry:(Math.random()-.5)*.011,rz:(Math.random()-.5)*.007,fs:.25+Math.random()*.8,fa:.07+Math.random()*.16,iy:m.position.y,ph:Math.random()*Math.PI*2};
+  scene.add(m);gems.push(m);
+}
+
+// Central gem — teal-gold hybrid
+const cg1=new THREE.Mesh(new THREE.OctahedronGeometry(.85,1),new THREE.MeshBasicMaterial({color:0xc9a84c,wireframe:true,transparent:true,opacity:.2}));
+cg1.position.set(-2.2,.3,0);scene.add(cg1);
+const cg2=new THREE.Mesh(new THREE.OctahedronGeometry(.65,0),new THREE.MeshBasicMaterial({color:0x22938f,wireframe:true,transparent:true,opacity:.28}));
+cg2.position.set(-2.2,.3,0);scene.add(cg2);
+const r1=new THREE.Mesh(new THREE.TorusGeometry(1.25,.011,8,80),new THREE.MeshBasicMaterial({color:0xc9a84c,transparent:true,opacity:.3}));
+r1.position.set(-2.2,.3,0);r1.rotation.x=Math.PI/3.5;scene.add(r1);
+const r2=new THREE.Mesh(new THREE.TorusGeometry(1.55,.007,8,80),new THREE.MeshBasicMaterial({color:0x1a9e9a,transparent:true,opacity:.18}));
+r2.position.set(-2.2,.3,0);r2.rotation.x=Math.PI/2;r2.rotation.z=Math.PI/4;scene.add(r2);
+
+// Stars
+const sv=[];
+for(let i=0;i<700;i++)sv.push((Math.random()-.5)*44,(Math.random()-.5)*32,(Math.random()-.5)*22-5);
+const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.Float32BufferAttribute(sv,3));
+scene.add(new THREE.Points(sg,new THREE.PointsMaterial({color:0xd4e8e8,size:.022,transparent:true,opacity:.5})));
+
+// Teal accent stars
+const tv=[];
+for(let i=0;i<200;i++)tv.push((Math.random()-.5)*30,(Math.random()-.5)*20,(Math.random()-.5)*15-3);
+const tg=new THREE.BufferGeometry();tg.setAttribute('position',new THREE.Float32BufferAttribute(tv,3));
+scene.add(new THREE.Points(tg,new THREE.PointsMaterial({color:0x22938f,size:.03,transparent:true,opacity:.35})));
+
+let mx=0,my=0;
+document.addEventListener('mousemove',e=>{mx=(e.clientX/window.innerWidth-.5)*2;my=-(e.clientY/window.innerHeight-.5)*2;});
+document.addEventListener('touchmove',e=>{const t=e.touches[0];mx=(t.clientX/window.innerWidth-.5)*1.2;my=-(t.clientY/window.innerHeight-.5)*1.2;},{passive:true});
+
+let tick=0;
+(function animate(){
+  requestAnimationFrame(animate);tick+=.007;
+  cg1.rotation.y+=.005;cg1.rotation.x+=.003;
+  cg2.rotation.y-=.008;cg2.rotation.z+=.004;
+  r1.rotation.y+=.011;r2.rotation.x+=.007;r2.rotation.y-=.005;
+  gems.forEach(g=>{const u=g.userData;g.rotation.x+=u.rx;g.rotation.y+=u.ry;g.rotation.z+=u.rz;g.position.y=u.iy+Math.sin(tick*u.fs+u.ph)*u.fa;});
+  camera.position.x+=(mx*.55-camera.position.x)*.04;
+  camera.position.y+=(my*.38-camera.position.y)*.04;
+  camera.lookAt(scene.position);
+  renderer.render(scene,camera);
+})();
+
+window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
+
+// ── SCROLL REVEAL ──
+const ro=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*100);ro.unobserve(e.target);}});},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
